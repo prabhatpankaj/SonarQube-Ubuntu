@@ -126,3 +126,14 @@ Save and close the file, when you are finished.
 sudo systemctl start sonar
 sudo systemctl enable sonar
 ```
+* You can check the status of SonarQube service with the following command:
+
+```
+sudo systemctl status sonar
+```
+* visit SonarQube page
+
+```
+http://YOUR_PUBLIC_IP:9000
+```
+
