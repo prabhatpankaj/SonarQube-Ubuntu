@@ -90,3 +90,39 @@ sonar.search.javaOpts=-Xms512m \
  -XX:+HeapDumpOnOutOfMemoryError
 ```
 Save and close the file, when you are finished.
+
+* Create Systemd Service file for SonarQube
+
+```
+sudo nano /etc/systemd/system/sonar.service
+
+```
+
+* Add the following lines:
+
+```
+[Unit]
+Description=SonarQube service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
+ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+
+User=sonar
+Group=sonar
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+Save and close the file, when you are finished.
+
+* start SonarQube service and enable it to start on boot time
+
+```
+sudo systemctl start sonar
+sudo systemctl enable sonar
+```
