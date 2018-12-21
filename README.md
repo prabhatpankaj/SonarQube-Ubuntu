@@ -10,6 +10,9 @@ curl -sL https://raw.githubusercontent.com/prabhatpankaj/ubuntustarter/master/in
 
 ```
 sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update -y
+sudo apt-get install oracle-java8-installer -y
+
 
 ```
 * Install Mysql
@@ -33,5 +36,15 @@ sudo systemctl enable apache2
 
 ```
 sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '01@Pass1234';
+\q
+
+mysql -u root -p
+
+CREATE DATABASE sonar;
+CREATE USER sonar@'localhost' IDENTIFIED BY '01@Pass1234';
+GRANT ALL ON sonar.* to sonar@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
 
 ```
