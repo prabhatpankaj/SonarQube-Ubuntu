@@ -6,15 +6,42 @@
 curl -sL https://raw.githubusercontent.com/prabhatpankaj/ubuntustarter/master/initial.sh | sh 
 
 ```
+
 * Install Java
 
 ```
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update -y
-sudo apt-get install oracle-java8-installer -y
+sudo apt update
+sudo apt install openjdk-8-jdk
+```
+*  Setting the JAVA_HOME Environment Variable
 
+Many programs written using Java use the JAVA_HOME environment variable to determine the Java
+installation location.
+To set this environment variable, first determine where Java is installed. Use the update-alternatives
+command:
+```
+sudo update-alternatives --config java
+```
+* Copy the path from your preferred installation. Then open /etc/environment using nano or your
+favorite text editor:
 
 ```
+sudo nano /etc/environment
+```
+* At the end of this file, add the following line, making sure to replace the highlighted path with your
+own copied path:
+
+```
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/"
+```
+
+* Modifying this file will set the JAVA_HOME path for all users on your system.
+
+```
+
+source /etc/environment
+```
+
 * Install Mysql
 
 ```
